@@ -9,3 +9,14 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+### Step 1: modified package-lock
+Details: `npm i` reported a high severity vulnerability
+
+### Step 2: Added unit tests for existing functionality
+
+* Added unit tests for existing functionality
+    * To be able to test correctly I created the `encodeKey` function. This function includes only the encode operation for the provided data.
+    * The existing `deterministicPartitionKey` was not changed in this step, to make sure that my tests are covering the existing implementation.
+    * the `encodeKey` function might be considered as an implementation detail and might not be required to be tested. In this situation the unit tests will be able to test only that the function is returning a string.
+    * I choose to test completely the function as `deterministicPartitionKey` function should also return ids related to the content of the event. To make sure that the output is related to the content of the event I need a more detailed test.

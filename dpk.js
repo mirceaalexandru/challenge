@@ -1,5 +1,13 @@
 const crypto = require("crypto");
 
+exports.encodeKey = (data) => {
+  let key = data;
+  if (typeof key !== "string") {
+    key = JSON.stringify(key);
+  }
+  return crypto.createHash("sha3-512").update(key).digest("hex");
+};
+
 exports.deterministicPartitionKey = (event) => {
   const TRIVIAL_PARTITION_KEY = "0";
   const MAX_PARTITION_KEY_LENGTH = 256;
