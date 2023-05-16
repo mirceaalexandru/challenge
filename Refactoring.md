@@ -20,3 +20,8 @@ Details: `npm i` reported a high severity vulnerability
     * The existing `deterministicPartitionKey` was not changed in this step, to make sure that my tests are covering the existing implementation.
     * the `encodeKey` function might be considered as an implementation detail and might not be required to be tested. In this situation the unit tests will be able to test only that the function is returning a string.
     * I choose to test completely the function as `deterministicPartitionKey` function should also return ids related to the content of the event. To make sure that the output is related to the content of the event I need a more detailed test.
+
+### Step 3: Refactor functionality
+
+ * Move constant on top of the file. It provides a better visibility for these constants and possible allow them to be exported (maybe in the case of TRIVIAL_PARTITION_KEY)
+ * simplify the existing functionality to have a clear implementation

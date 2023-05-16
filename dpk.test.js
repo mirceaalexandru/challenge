@@ -30,6 +30,12 @@ describe("deterministicPartitionKey", () => {
     expect(key).toBe(JSON.stringify(event.partitionKey));
   });
 
+  it("Returns the stringified partition key when event contains partitionKey as value 0", () => {
+    const event = {something: 1, partitionKey: 0};
+    const key = deterministicPartitionKey(event);
+    expect(key).toBe(encodeKey(event));
+  });
+
   it("Returns encoded partition key when event contains partitionKey with length bigger than PARTITION_KEY_LIMIT", () => {
     const event = {something: 1, partitionKey: Array(512).join('x')};
     const key = deterministicPartitionKey(event);
